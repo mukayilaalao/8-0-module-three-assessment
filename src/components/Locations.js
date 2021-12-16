@@ -22,7 +22,7 @@ class Locations extends React.Component {
   render() {
     const { show, locations } = this.state;
     const allLocations = locations.map((location) => (
-      <li>
+      <li key={location.id}>
         <div>Name: {location.name}</div>
         <div>Climate: {location.climate}</div>
         <div>Terrain: {location.terrain}</div>
