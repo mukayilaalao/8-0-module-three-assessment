@@ -1,5 +1,4 @@
 import React from "react";
-import Movie from "./Movie";
 
 class Movies extends React.Component {
   constructor() {
@@ -30,13 +29,21 @@ class Movies extends React.Component {
         {movie.title}
       </option>
     ));
+    const { title, release_date, description } = this.state.movie;
+    const movie = (
+      <div>
+        <h3>Title: {title}</h3>
+        <div>Release Date: {release_date}</div>
+        <div>Description: {description}</div>
+      </div>
+    );
     return (
       <section className="movies">
         <h2>Select a Movie</h2>
         <select onChange={this.handleChange} value={this.state.selectedOption}>
           <option value=""></option>
         </select>
-        <Movie movie={this.state.movie} />
+        {movie}
       </section>
     );
   }
