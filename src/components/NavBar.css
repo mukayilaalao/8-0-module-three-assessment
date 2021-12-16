@@ -1,7 +1,8 @@
 .nav-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  background-color: greenyellow;
+  grid-template-rows: 50px;
+  background-color: chocolate;
 }
 
 .nav-bar img {

@@ -1,0 +1,12 @@
+.locations {
+  background-color: gray;
+}
+.hide-class {
+  background-color: black;
+  color: white;
+}
+
+.show-class {
+  background-color: grey;
+  color: blue;
+}

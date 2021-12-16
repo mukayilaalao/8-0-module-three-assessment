@@ -1,4 +1,5 @@
 import React from "react";
+import "./People.css";
 
 class People extends React.Component {
   constructor() {
@@ -43,18 +44,17 @@ class People extends React.Component {
           />
           <button type="submit">Submit</button>
         </form>
-        {!Object.values(person).length && "Not Found"}
-        {Object.values(person).length && (
-          <div>
-            <div>Name: {person.name}</div>
-            <div>Age: {person.age}</div>
+        <div>
+          {!Object.values(person).length ? (
+            "Not Found"
+          ) : (
             <div>
-              Gender:{" "}
-              {person.gender[0].toUpperCase() +
-                person.gender.slice(1).toLowerCase()}
+              <div>Name: {person.name}</div>
+              <div>Age: {person.age}</div>
+              <div>Gender: {person.gender}</div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </section>
     );
   }

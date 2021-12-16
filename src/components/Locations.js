@@ -1,4 +1,5 @@
 import React from "react";
+import "./Locations.css";
 
 class Locations extends React.Component {
   constructor() {
@@ -31,10 +32,13 @@ class Locations extends React.Component {
     return (
       <section className="locations">
         <h2>List of Locations</h2>
-        <button onClick={this.handleClick}>
+        <button
+          onClick={this.handleClick}
+          className={show ? "hide-class" : "show-class"}
+        >
           {show ? "Hide Locations" : "Show Locations"}
         </button>
-        <ul>{show ? allLocations : ""}</ul>
+        <ol>{show ? allLocations : ""}</ol>
       </section>
     );
   }
