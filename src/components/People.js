@@ -28,6 +28,7 @@ class People extends React.Component {
     e.preventDefault();
     this.setState({
       person: this.personFinder(this.state.userInput),
+      userInput: "",
     });
   };
   render() {
