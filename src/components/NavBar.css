@@ -3,3 +3,8 @@
   grid-template-columns: repeat(4, 1fr);
   background-color: greenyellow;
 }
+
+.nav-bar img {
+  height: 50px;
+  width: 50px;
+}

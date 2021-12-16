@@ -36,6 +36,7 @@ class People extends React.Component {
         <h2>Search for a Person</h2>
         <form onSubmit={this.handleSubmit}>
           <input
+            type="text"
             value={userInput}
             onChange={this.handleChange}
             placeholder="find your person"

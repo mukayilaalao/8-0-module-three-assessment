@@ -21,19 +21,20 @@ class Locations extends React.Component {
   render() {
     const { show, locations } = this.state;
     const allLocations = locations.map((location) => (
-      <div>
+      <li>
         <div>Name: {location.name}</div>
         <div>Climate: {location.climate}</div>
         <div>Terrain: {location.terrain}</div>
-      </div>
+      </li>
     ));
 
     return (
-      <section>
+      <section className="locations">
+        <h2>List of Locations</h2>
         <button onClick={this.handleClick}>
           {show ? "Hide Locations" : "Show Locations"}
         </button>
-        {show ? allLocations : ""}
+        <ul>{show ? allLocations : ""}</ul>
       </section>
     );
   }
