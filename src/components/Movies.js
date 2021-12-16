@@ -11,11 +11,14 @@ class Movies extends React.Component {
   }
   async componentDidMount() {
     const res = await fetch("https://ghibliapi.herokuapp.com/films");
-    const data = await data.json();
+    const data = await res.json();
     this.setState({ movies: data });
   }
   getSelectedOption = (str) => {
-    return this.state.movies.find((movie) => movie.title === str);
+    const movie = this.state.movies.find(
+      (movie) => movie.title.toLowerCase() === str.toLowerCase()
+    );
+    return !movie ? {} : movie;
   };
   handleChange = (e) => {
     this.setState({
@@ -29,21 +32,23 @@ class Movies extends React.Component {
         {movie.title}
       </option>
     ));
-    const { title, release_date, description } = this.state.movie;
-    const movie = (
-      <div>
-        <h3>Title: {title}</h3>
-        <div>Release Date: {release_date}</div>
-        <div>Description: {description}</div>
-      </div>
-    );
+    const { movie } = this.state;
     return (
       <section className="movies">
         <h2>Select a Movie</h2>
         <select onChange={this.handleChange} value={this.state.selectedOption}>
           <option value=""></option>
+          {allMovies}
         </select>
-        {movie}
+        {!Object.values(movie).length ? (
+          ""
+        ) : (
+          <div>
+            <h3>Title: {movie.title}</h3>
+            <div>Release Date: {movie.release_date}</div>
+            <div>Description: {movie.description}</div>
+          </div>
+        )}
       </section>
     );
   }

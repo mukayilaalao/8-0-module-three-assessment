@@ -10,9 +10,14 @@ class Locations extends React.Component {
   }
   async componentDidMount() {
     const res = await fetch("https://ghibliapi.herokuapp.com/locations");
-    const data = await data.json();
+    const data = await res.json();
     this.setState({ locations: data });
   }
+  handleClick = (e) => {
+    this.setState({
+      show: !this.state.show,
+    });
+  };
   render() {
     const { show, locations } = this.state;
     const allLocations = locations.map((location) => (
@@ -28,7 +33,7 @@ class Locations extends React.Component {
         <button onClick={this.handleClick}>
           {show ? "Hide Locations" : "Show Locations"}
         </button>
-        {show ? locations : ""}
+        {show ? allLocations : ""}
       </section>
     );
   }

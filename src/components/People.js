@@ -1,4 +1,3 @@
-import Person from "./Person";
 import React from "react";
 
 class People extends React.Component {
@@ -12,13 +11,14 @@ class People extends React.Component {
   }
   async componentDidMount() {
     const res = await fetch("https://ghibliapi.herokuapp.com/people");
-    const data = await data.json();
+    const data = await res.json();
     this.setState({ people: data });
   }
   personFinder = (name) => {
-    return this.state.people.find(
+    const person = this.state.people.find(
       (person) => person.name.toLowerCase() === name.toLowerCase()
     );
+    return !person ? {} : person;
   };
   handleChange = (e) => {
     this.setState({ userInput: e.target.value });
@@ -26,7 +26,7 @@ class People extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({
-      person: this.personFinder(this.state.person),
+      person: this.personFinder(this.state.userInput),
     });
   };
   render() {
@@ -42,7 +42,18 @@ class People extends React.Component {
           />
           <button type="submit">Submit</button>
         </form>
-        <Person person={person} />
+        {!Object.values(person).length && "Not Found"}
+        {Object.values(person).length && (
+          <div>
+            <div>Name: {person.name}</div>
+            <div>Age: {person.age}</div>
+            <div>
+              Gender:{" "}
+              {person.gender[0].toUpperCase() +
+                person.gender.slice(1).toLowerCase()}
+            </div>
+          </div>
+        )}
       </section>
     );
   }
